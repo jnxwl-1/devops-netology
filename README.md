@@ -18,3 +18,6 @@
 5. Исключение переопределенных файлов с расширением override.tf, override.tf.json а так же файлы содержащие в названии _override.tf и _override.tf.json
 
 6. Пропуск файлов содержащие расширение .terraformrc и файл terraform.rc 
+
+1
+
