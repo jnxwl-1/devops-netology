@@ -8,3 +8,8 @@
 14. vagrant halt
 
 
+UPD (03.10.2021)
+12. 
+mkdir /tmp/new_bash_dir/
+cp /bin/bash /tmp/new_bash_dir/
+PATH=/tmp/new_bash_dir/:$PATH
