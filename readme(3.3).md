@@ -48,8 +48,17 @@ lsof: WARNING: can't stat() tracefs file system /sys/kernel/debug/tracing
 
 В чем может быть проблема?
 
+
 #addition
-Спасибо за развернутый комментарий. Ошибка была в том что я закрывал редактор.
+lsof -p 1873
+
+evolution  1873 jnxwl   13r      REG     8,1    32768     806621 /home/jnxwl/.local/share/gvfs-metadata/home-ae631645.log (deleted)
+
+echo '' >/proc/1873/fd/4
+
+
+
+
 
 
 4. Занимают ли зомби-процессы какие-то ресурсы в ОС (CPU, RAM, IO)?
