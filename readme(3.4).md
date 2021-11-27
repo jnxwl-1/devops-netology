@@ -46,12 +46,10 @@ root@jnxwl-virtual-machine:~# systemctl status ne-daemon.service
 окт 20 11:16:14 jnxwl-virtual-machine node_exporter[12974]: level=info ts=2021-10-20T08:16:14.092Z caller=node_exporter.go:199 msg="Listening on" address=:9100
 окт 20 11:16:14 jnxwl-virtual-machine node_exporter[12974]: level=info ts=2021-10-20T08:16:14.095Z caller=tls_config.go:191 msg="TLS is disabled." http2=false
 
-
 6. ps aux | grep node_exporter
 
-
-root       12974  0.0  0.2 716440 11892 ?        Ssl  11:16   0:00 /home/jnxwl/devops/node_exporter/node_exporter
-root       12987  0.0  0.0  17676   672 pts/0    S+   11:19   0:00 grep --color=auto node_exporter
+root         597  0.0  0.3 716184 12604 ?        Ssl  17:29   0:00 /home/jnxwl/devops/node_exporter/node_exporter
+jnxwl       4133  0.0  0.0  17676  2564 pts/1    S+   17:47   0:00 grep --color=auto node_exporter
 
 
 7. sudo ufw allow 9100
@@ -60,8 +58,10 @@ root       12987  0.0  0.0  17676   672 pts/0    S+   11:19   0:00 grep --color=
 
 9. С хостовой машины открывается 192.168.88.6:9100
 
-Node Exporter
-Metrics
+
+sudo cat /proc/597/environ
+LANG=en_US.UTF-8LC_ADDRESS=ru_RU.UTF-8LC_IDENTIFICATION=ru_RU.UTF-8LC_MEASUREMENT=ru_RU.UTF-8LC_MONETARY=ru_RU.UTF-8LC_NAME=ru_RU.UTF-8LC_NUMERIC=ru_RU.UTF-8LC_PAPER=ru_RU.UTF-8LC_TELEPHONE=ru_RU.UTF-8LC_TIME=ru_RU.UTF-8PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/binINVOCATION_ID=75dd6d0aa310459fbec8512e5367c75fJOURNAL_STREAM=8:34020MYVAR=random_value
+
 
 
 
@@ -168,7 +168,7 @@ jnxwl@jnxwl-virtual-machine:~$ ps -e |grep sleep
   10203 pts/1    00:00:00 sleep
 
   root@jnxwl-virtual-machine:~# nsenter --target 10203 --pid --mount
-  
+
   root@jnxwl-virtual-machine:/# ps
       PID TTY          TIME CMD
     10389 pts/2    00:00:00 sudo
@@ -185,5 +185,3 @@ jnxwl@jnxwl-virtual-machine:~$ ps -e |grep sleep
 :(){ :|:& };: определяет функцию с именем : ,которая порождает саму себя (дважды, один канал переходит в другой) и создает фон.
 
 ulimit -u 50  -  ограничения количества processes-per-user.
-
-
